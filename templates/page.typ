@@ -1,14 +1,8 @@
 // This is important for shiroa to produce a responsive layout
 // and multiple targets.
 #import "@preview/shiroa:0.2.3": (
-  get-page-width,
-  target,
-  is-web-target,
-  is-pdf-target,
-  is-html-target,
-  plain-text,
-  shiroa-sys-target,
-  templates,
+  get-page-width, is-html-target, is-pdf-target, is-web-target, plain-text,
+  shiroa-sys-target, target, templates,
 )
 #import templates: *
 
@@ -23,12 +17,18 @@
 #let sys-is-html-target = ("target" in dictionary(std))
 
 /// Creates an embedded block typst frame.
-#let div-frame(content, attrs: (:), tag: "div") = html.elem(tag, html.frame(content), attrs: attrs)
+#let div-frame(content, attrs: (:), tag: "div") = html.elem(
+  tag,
+  html.frame(content),
+  attrs: attrs,
+)
 #let span-frame = div-frame.with(tag: "span")
 #let p-frame = div-frame.with(tag: "p")
 
 // Theme (Colors)
-#let themes = theme-box-styles-from(toml("theme-style.toml"), xml: it => xml(it))
+#let themes = theme-box-styles-from(toml("theme-style.toml"), xml: it => xml(
+  it,
+))
 #let (
   default-theme: (
     style: theme-style,
@@ -100,7 +100,9 @@
   import "@preview/shiroa-starlight:0.2.3": builtin-icon
 
   in-heading.update(true)
-  html.elem("div", attrs: (class: "sl-heading-wrapper level-h" + str(it.level + 1)))[
+  html.elem("div", attrs: (
+    class: "sl-heading-wrapper level-h" + str(it.level + 1),
+  ))[
     #it
     #html.elem(
       "h" + str(it.level + 1),
@@ -152,7 +154,9 @@
   }
 
   show math.equation: set text(weight: 400)
-  show math.equation.where(block: true): it => context if shiroa-sys-target() == "html" {
+  show math.equation.where(block: true): it => context if (
+    shiroa-sys-target() == "html"
+  ) {
     theme-box(
       tag: "div",
       theme => {
@@ -163,7 +167,9 @@
   } else {
     it
   }
-  show math.equation.where(block: false): it => context if shiroa-sys-target() == "html" {
+  show math.equation.where(block: false): it => context if (
+    shiroa-sys-target() == "html"
+  ) {
     theme-box(
       tag: "span",
       theme => {
@@ -180,7 +186,13 @@
 /// The project function defines how your document looks.
 /// It takes your content and some metadata and formats it.
 /// Go ahead and customize it to your liking!
-#let project(title: "Typst Book", authors: (), kind: "page", description: none, body) = {
+#let project(
+  title: "Typst Book",
+  authors: (),
+  kind: "page",
+  description: none,
+  body,
+) = {
   // set basic document metadata
   set document(
     author: authors,
