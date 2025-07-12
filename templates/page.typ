@@ -26,7 +26,7 @@
 #let p-frame = div-frame.with(tag: "p")
 
 // Theme (Colors)
-#let themes = theme-box-styles-from(toml("theme-style.toml"), read: it => read(
+#let themes = theme-box-styles-from(toml("theme-style.toml"), xml: it => xml(
   it,
 ))
 #let (

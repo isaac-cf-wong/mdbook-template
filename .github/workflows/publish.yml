@@ -46,6 +46,8 @@ jobs:
 
       - name: Build Ebook
         run: |
+          which shiroa
+          shiroa --version
           shiroa build --font-path assets/fonts --path-to-root /shiroa-template/paged/ -w . . --mode static-html
       
       - name: Setup Pages
