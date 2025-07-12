@@ -29,9 +29,8 @@ jobs:
         run: |
           detect-secrets-hook
 
+      - name: Install codespell
+        run: pip install codespell
+
       - name: Check spelling with codespell
-        uses: codespell-project/actions-codespell@v2.1
-        with:
-          check_filenames: true
-          check_hidden: true
-          ignore_words_file: ".codespellignore"
+        run: codespell --check-filenames --check-hidden --ignore-words .codespellignore /book.toml src
