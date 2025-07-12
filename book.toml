@@ -10,7 +10,7 @@ edition = "2024"
 [output.html]
 smart-punctuation = true
 mathjax-support = true
-site-url = "/mdBook/"
+site-url = "/mdbook-template/"
 git-repository-url = "https://github.com/isaac-cf-wong/mdbook-template"
 edit-url-template = "https://github.com/isaac-cf-wong/mdbook-template/edit/main/{path}"
 hash-files = true
