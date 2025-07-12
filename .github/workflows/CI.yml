@@ -16,21 +16,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install detect-secrets
+        run: |
+          pip install detect-secrets
+
+      - name: Run detect-secrets-hook. This will be triggered if secretes are detected in the codebase.
+        run: |
+          detect-secrets-hook
+
       - name: Check spelling with codespell
         uses: codespell-project/actions-codespell@v2.1
         with:
           check_filenames: true
           check_hidden: true
           ignore_words_file: ".codespellignore"
-
-      - name: Setup Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
-
-      - name: Install typstyle
-        run: cargo install typstyle
-
-      - name: Check Markdown formatting with typstyle
-        run: typstyle --check .

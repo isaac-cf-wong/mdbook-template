@@ -1,7 +1,7 @@
 name: Publish GitHub Page
 on:
   push:
-    branches: ['main']
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -14,49 +14,26 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  pages:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Download font assets
-        run: |
-          mkdir -p assets/fonts
-          curl -L https://github.com/Myriad-Dreamin/shiroa/releases/download/v0.1.0/charter-font-assets.tar.gz | tar -xvz -C assets/fonts/
-          curl -L https://github.com/Myriad-Dreamin/shiroa/releases/download/v0.1.5/source-han-serif-font-assets.tar.gz | tar -xvz -C assets/fonts/
-
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
-
-      - name: Set Node.js 22.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 22.x
-
-      - name: Install Artifact Cache
-        uses: Swatinem/rust-cache@v2
-
-      - name: Install shiroa
-        run: cargo install --git https://github.com/Myriad-Dreamin/shiroa --locked shiroa
-
-
-      - name: Build Ebook
-        run: |
-          shiroa build --font-path assets/fonts
-      
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
+      - uses: actions/checkout@v4
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v2
+      - name: Build mdBook
+        run: mdbook build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: ./book
 
-      - name: Deploy to GitHub Page
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
-
+        uses: actions/deploy-pages@v4         
