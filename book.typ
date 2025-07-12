@@ -5,7 +5,6 @@
 
 #book-meta(
   title: "shiroa",
-  repository: "http://test.com",
   summary: [
     #prefix-chapter("sample-page.typ")[Hello, typst]
   ],
