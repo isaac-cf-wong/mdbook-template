@@ -12,12 +12,12 @@ repos:
         files: book\.toml$
       - id: trailing-whitespace
         name: Trim trailing whitespace
-        description: Removes trailing whitespace in Typst and other text files
-        files: \.(typ|md|toml)$
+        description: Removes trailing whitespace in text files
+        files: \.(md|toml)$
       - id: end-of-file-fixer
         name: Ensure newline at end of file
         description: Adds newline to end of Typst and other text files
-        files: \.(typ|md|toml)$
+        files: \.(md|toml)$
       - id: check-added-large-files
         name: Prevent large file commits
         description: Blocks large files like PDFs or fonts
