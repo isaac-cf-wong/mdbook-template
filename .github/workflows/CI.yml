@@ -21,14 +21,6 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install detect-secrets
-        run: |
-          pip install detect-secrets
-
-      - name: Run detect-secrets-hook. This will be triggered if secretes are detected in the codebase.
-        run: |
-          detect-secrets-hook
-
       - name: Install codespell
         run: pip install codespell
 

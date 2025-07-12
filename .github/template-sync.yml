@@ -4,8 +4,8 @@ files:
   - ".vscode"
   - ".pre-commit-config.yml"
   - "LICENSE"
-  - "README.md"
-
+  
+  - "!README.md"
   - "!.github/workflows/template-sync.yml"
   - "!.github/template-sync.yml"
   - "!.codespellignore"

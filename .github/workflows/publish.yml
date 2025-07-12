@@ -1,4 +1,4 @@
-name: Publish GitHub Page
+name: Publish
 on:
   release:
     types: [created]
