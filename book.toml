@@ -1,0 +1,33 @@
+[book]
+title = "An mdbook template"
+description = "A template to create an mdbook maintained in a GitHub repository"
+authors = []
+language = "en"
+
+[rust]
+edition = "2024"
+
+[output.html]
+smart-punctuation = true
+mathjax-support = true
+additional-js = ["theme/mathjax.js"]
+site-url = "/mdBook/"
+git-repository-url = "https://github.com/isaac-cf-wong/mdbook-template"
+edit-url-template = "https://github.com/isaac-cf-wong/mdbook-template/edit/main/{path}"
+hash-files = true
+
+[output.html.playground]
+editable = true
+line-numbers = true
+
+[output.html.code.hidelines]
+python = "~"
+
+[output.html.search]
+limit-results = 20
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 2
+boost-paragraph = 1
+expand = true
+heading-split-level = 2
