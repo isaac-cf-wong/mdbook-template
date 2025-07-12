@@ -1,0 +1,19 @@
+files:
+  - ".gitignore" # include
+  - ".github"
+  - ".vscode"
+  - ".pre-commit-config.yml"
+  - "LICENSE"
+  - "README.md"
+  - "sample-page.typ"
+  - "templates/ebook.tpy"
+  - "templates/page.typ"
+  - "templates/theme-style.toml"
+  - "templates/tokyo-night.tmTheme"
+
+  - "!.github/workflows/template-sync.yml"
+  - "!.github/template-sync.yml"
+  - "!.codespellignore"
+  - "!book.typ"
+  - "!ebook.typ"
+

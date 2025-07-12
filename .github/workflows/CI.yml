@@ -1,0 +1,36 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check spelling with codespell
+        uses: codespell-project/actions-codespell@v2.1
+        with:
+          check_filenames: true
+          check_hidden: true
+          ignore_words_file: ".codespellignore"
+
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Install typstyle
+        run: cargo install typstyle
+
+      - name: Check Markdown formatting with typstyle
+        run: typstyle --check .
