@@ -1,17 +1,6 @@
-*.pdf
-
 # Generated output files
-/output/
-/dist/
-
-# Temporary files
-*.tmp
-*.temp
-*.log
-
-# Dependency and build artifacts
-/target/
-/.typst/
+/book/
+*.pdf
 
 # Local environment and IDE files
 .idea/

@@ -32,12 +32,9 @@ repos:
         args: ["--ignore-words=.codespellignore"]
         files: ^.*\.(typ|md|toml)$
 
-  - repo: local
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0  # Use the latest stable version
     hooks:
-    - id: typstyle
-      name: Format Typst files with typstyle
-      description: Runs typstyle to standardize Typst file formatting
-      entry: typstyle
-      language: system
-      files: \.typ$
-      args: [--inplace, --verbose]
+      - id: detect-secrets
+        name: Detect secrets within the codebase
+        description: Detect and block secrets from committing to the codebase
