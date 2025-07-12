@@ -172,5 +172,7 @@ To improve this template repository (e.g., update hooks or workflows):
 - **GitHub Page**: Set Settings > Pages > Build and deployment > Source to `GitHub Actions`.
 
 ---
+
 For questions or issues, open an issue in your eBook repository or this template repository.
+
 ---
